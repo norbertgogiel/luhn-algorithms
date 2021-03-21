@@ -33,3 +33,7 @@ jacocoTestCoverageVerification {
         }
     }
 }
+
+task ciBuild {
+    finalizedBy build, jacocoTestReport, jacocoTestCoverageVerification
+}
