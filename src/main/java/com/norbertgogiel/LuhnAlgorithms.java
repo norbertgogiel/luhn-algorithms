@@ -2,6 +2,8 @@ package com.norbertgogiel;
 
 public class LuhnAlgorithms {
 
+    private LuhnAlgorithms() {}
+
     public static boolean isValid(String number) {
         return calculateLuhnCheck(Long.parseLong(number)) % 10 == 0;
     }
