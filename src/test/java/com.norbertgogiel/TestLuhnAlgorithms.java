@@ -24,4 +24,9 @@ public class TestLuhnAlgorithms {
     public void testStringIsNotValid() {
         Assertions.assertEquals(false, LuhnAlgorithms.isValid("4444333322221112"));
     }
+
+    @Test
+    public void testStringBiggerThanMaxLongAndThrows() {
+        Assertions.assertThrows(NumberFormatException.class, () -> LuhnAlgorithms.isValid("9223372036854775808"));
+    }
 }
