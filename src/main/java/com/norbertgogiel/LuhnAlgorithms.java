@@ -15,7 +15,7 @@ public class LuhnAlgorithms {
      * than {@link Long#MAX_VALUE}.
      *
      * The method parses the String to long and passes the
-     * value to {@link #calculateLuhnCheck(long)}
+     * value to {@link #calculateLuhnSum(long, int)}
      *
      * @param number as String
      * @throws NumberFormatException if the String contains
@@ -34,18 +34,57 @@ public class LuhnAlgorithms {
      * The number has to be numeric and be equal to or smaller
      * than {@link Long#MAX_VALUE}.
      *
-     * The method passes the value to {@link #calculateLuhnCheck(long)}
+     * The method passes the value to {@link #calculateLuhnSum(long, int)}
      *
      * @param number as long
      * @return a boolean indicating if the number is a valid Luhn number
      */
     public static boolean isValid(long number) {
-        return calculateLuhnCheck(number) % 10 == 0;
+        return calculateLuhnSum(number, 1) % 10 == 0;
     }
 
-    private static long calculateLuhnCheck(long number) {
+    public static long generateLuhnFromRange(long lowerBound, long upperBound, int finalLength) {
+        int lowerBoundLength = countDigits(lowerBound);
+        int upperBoundLength = countDigits(upperBound);
+        lowerBound = normaliseBound(false, lowerBound, finalLength - lowerBoundLength - 1);
+        upperBound = normaliseBound(true, upperBound, finalLength - upperBoundLength - 1);
+        long randomLong = calculateRandom(lowerBound, upperBound);
+        long luhnRemainder = calculateLuhnLastDigit(randomLong);
+        return (randomLong * 10) + luhnRemainder;
+    }
+
+    private static int countDigits(long number) {
+        int length = 0;
+        long multiplier = 1;
+        do {
+            length++;
+            multiplier *= 10;
+        } while (multiplier <= number);
+        return length;
+    }
+
+    private static long normaliseBound(boolean isUpperBound, long number, int power) {
+        do {
+            number *= 10;
+            if (isUpperBound)
+                number += 9;
+            power--;
+        } while (power > 0);
+        return number;
+    }
+
+    private static long calculateRandom(long lowerBound, long upperBound) {
+        return lowerBound + (long)(Math.random() * (upperBound - lowerBound));
+    }
+
+    private static long calculateLuhnLastDigit(long number) {
+        int multiplier = countDigits(number) % 2 == 0 ? 2 : 1;
+        long sum = calculateLuhnSum(number, multiplier);
+        return (sum % 10 == 0) ? 0 : 10 - (sum % 10);
+    }
+
+    private static long calculateLuhnSum(long number, int multiplier) {
         long sum = 0;
-        long multiplier = 2;
         do {
             long lastDigit = number % 10;
             number /= 10;
