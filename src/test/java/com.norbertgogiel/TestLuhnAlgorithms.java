@@ -14,6 +14,11 @@ public class TestLuhnAlgorithms {
     }
 
     @Test
+    public void testOddLengthLongIsValid() {
+        assertTrue(LuhnAlgorithms.isValid(372095199917337L));
+    }
+
+    @Test
     public void testLongIsNotValid() {
         assertFalse(LuhnAlgorithms.isValid(4444333322221112L));
     }
