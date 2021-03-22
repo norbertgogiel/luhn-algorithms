@@ -78,8 +78,7 @@ public class LuhnAlgorithms {
     }
 
     private static long calculateLuhnLastDigit(long number) {
-        int multiplier = countDigits(number) % 2 == 0 ? 2 : 1;
-        long sum = calculateLuhnSum(number, multiplier);
+        long sum = calculateLuhnSum(number, 2);
         return (sum % 10 == 0) ? 0 : 10 - (sum % 10);
     }
 

@@ -39,8 +39,14 @@ public class TestLuhnAlgorithms {
     }
 
     @Test
-    public void testGenerateLuhnNumber() {
+    public void testGenerateOddLengthLuhnNumber() {
         long testNumber = LuhnAlgorithms.generateLuhnFromRange(111,222, 5);
+        assertTrue(LuhnAlgorithms.isValid(testNumber));
+    }
+
+    @Test
+    public void testGenerateEvenLengthLuhnNumber() {
+        long testNumber = LuhnAlgorithms.generateLuhnFromRange(111,222, 6);
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
 }
