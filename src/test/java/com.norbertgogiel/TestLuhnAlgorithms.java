@@ -9,8 +9,8 @@ import org.junit.Test;
 public class TestLuhnAlgorithms {
 
     @Test
-    public void testLongIsValid() {
-        assertTrue(LuhnAlgorithms.isValid(4444333322221111L));
+    public void testEvenLengthLongIsValid() {
+        assertTrue(LuhnAlgorithms.isValid(4716881992809921L));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class TestLuhnAlgorithms {
 
     @Test
     public void testStringIsValid() {
-        assertTrue(LuhnAlgorithms.isValid("4444333322221111"));
+        assertTrue(LuhnAlgorithms.isValid("4716881992809921"));
     }
 
     @Test
