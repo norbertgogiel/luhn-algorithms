@@ -1,6 +1,6 @@
 package com.norbertgogiel;
 
-public class LuhnAlgorithms {
+public final class LuhnAlgorithms {
 
     /**
      * Private constructor.
