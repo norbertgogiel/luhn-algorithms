@@ -64,4 +64,16 @@ public class TestLuhnAlgorithms {
         long testNumber = LuhnAlgorithms.generateLuhnFromRange(111,222, 6);
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
+
+    @Test
+    public void testGenerateEvenRandomLuhn() {
+        long testNumber = LuhnAlgorithms.generateRandomLuhn(10);
+        assertTrue(LuhnAlgorithms.isValid(testNumber));
+    }
+
+    @Test
+    public void testGenerateOddRandomLuhn() {
+        long testNumber = LuhnAlgorithms.generateRandomLuhn(11);
+        assertTrue(LuhnAlgorithms.isValid(testNumber));
+    }
 }
