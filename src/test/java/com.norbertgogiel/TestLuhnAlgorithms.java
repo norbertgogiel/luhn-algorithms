@@ -57,24 +57,28 @@ public class TestLuhnAlgorithms {
     @Test
     public void testGenerateOddLengthLuhnNumber() {
         long testNumber = LuhnAlgorithms.generateLuhnFromRange(111,222, 5);
+        assertTrue(testNumber < 100000L);
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
 
     @Test
     public void testGenerateEvenLengthLuhnNumber() {
         long testNumber = LuhnAlgorithms.generateLuhnFromRange(111,222, 6);
+        assertTrue(testNumber < 1000000L);
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
 
     @Test
     public void testGenerateEvenRandomLuhn() {
         long testNumber = LuhnAlgorithms.generateRandomLuhn(10);
+        assertTrue(testNumber < 10000000000L);
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
 
     @Test
     public void testGenerateOddRandomLuhn() {
         long testNumber = LuhnAlgorithms.generateRandomLuhn(11);
+        assertTrue(testNumber < 100000000000L);
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
 
