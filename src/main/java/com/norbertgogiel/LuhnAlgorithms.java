@@ -79,6 +79,9 @@ public final class LuhnAlgorithms {
      * is NOT going to provide the result between the lower value and
      * the higher value.
      *
+     * <p>If the required length is 1 the algorithm returns 0 by default
+     * as this is the only valid digit that passes mod10 validation.
+     *
      * <p>The user will have to provide the final length as {@code int}
      * to return the final result of that length.
      *
@@ -101,6 +104,8 @@ public final class LuhnAlgorithms {
      *              {@code length = finalLength}
      */
     public static long generateLuhnFromRange(long lowerBound, long upperBound, int finalLength) {
+        if (finalLength == 1)
+            return 0;
         int lowerBoundLength = countDigits(lowerBound);
         int upperBoundLength = countDigits(upperBound);
         lowerBound = normaliseBound(false, lowerBound, finalLength - lowerBoundLength - 1);

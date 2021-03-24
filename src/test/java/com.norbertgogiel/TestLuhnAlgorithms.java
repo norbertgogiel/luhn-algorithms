@@ -1,5 +1,6 @@
 package com.norbertgogiel;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -74,6 +75,13 @@ public class TestLuhnAlgorithms {
     @Test
     public void testGenerateOddRandomLuhn() {
         long testNumber = LuhnAlgorithms.generateRandomLuhn(11);
+        assertTrue(LuhnAlgorithms.isValid(testNumber));
+    }
+
+    @Test
+    public void testGenerateRandomLuhnOfLengthOne() {
+        long testNumber = LuhnAlgorithms.generateRandomLuhn(1);
+        assertEquals(0, testNumber);
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
 }
