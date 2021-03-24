@@ -3,46 +3,103 @@ package com.norbertgogiel;
 public class LuhnAlgorithms {
 
     /**
-     * A private constructor.
+     * Private constructor.
      */
     private LuhnAlgorithms() {}
 
     /**
-     * This method accepts a number as String and checks if it
+     * Accepts any number as {@code String} and checks if it
      * is valid Luhn number.
      *
-     * The number has to be numeric and be equal to or smaller
-     * than {@link Long#MAX_VALUE}.
+     * <p>The number has to be equal or greater than zero and be
+     * equal to or smaller than {@link Long#MAX_VALUE}.
      *
-     * The method parses the String to long and passes the
-     * value to {@link #calculateLuhnSum(long, int)}
+     * <p>The method parses {@code String} to {@code long} and passes
+     * the result to {@link #calculateLuhnSum(long, int)}.
      *
-     * @param number as String
-     * @throws NumberFormatException if the String contains
-     * any other ASCII characters than numbers or if the number
-     * is greater than {@link Long#MAX_VALUE}
-     * @return a boolean indicating if the number is a valid Luhn number
+     * <p>An exception of type {@code NumberFormatException} is
+     * thrown if any of the following situations occurs:
+     * <ul>
+     *
+     * <li>The first argument is {@code null} or is a {@code String}
+     * of length zero.
+     *
+     * <li>The String contains any other ASCII character
+     * than numbers.
+     *
+     * <li>The number is greater than {@link Long#MAX_VALUE}.
+     * </ul>
+     *
+     * @param       number a {@code String} containing a representation
+     *                     of the number to be parsed and validated
+     * @throws      NumberFormatException if the string does not contain
+     *              a parsable {@code long}.
+     * @return      a {@code boolean} indicator whether the number is valid
+     *              Luhn number
      */
     public static boolean isValid(String number) {
         return isValid(Long.parseLong(number));
     }
 
     /**
-     * This method accepts a number as long checks if it
-     * is valid Luhn number.
+     * Accepts an input as {@code long} that is to be validated
+     * as Luhn number.
      *
-     * The number has to be numeric and be equal to or smaller
-     * than {@link Long#MAX_VALUE}.
+     * <p>The number has to be equal to or greater than zero and be equal
+     * to or smaller than {@link Long#MAX_VALUE}.
      *
-     * The method passes the value to {@link #calculateLuhnSum(long, int)}
+     * <p>The method passes the value to {@link #calculateLuhnSum(long, int)}
+     * to calculate the Luhn sum.
      *
-     * @param number as long
-     * @return a boolean indicating if the number is a valid Luhn number
+     * <p>This method then checks if mod10 of the result is equal to zero
+     * to verify validity.
+     *
+     * @param       number a {@code long} as a parameter to be validated
+     * @return      a {@code boolean} indicator whether the number is
+     *              valid Luhn number
      */
     public static boolean isValid(long number) {
         return calculateLuhnSum(number, 1) % 10 == 0;
     }
 
+    /**
+     * Generates valid Luhn number within the range provided by
+     * lowerBound and upperBound.
+     *
+     * <p>The advantage over most algorithms is that this algorithm does
+     * NOT circularly use random number generation until a match is
+     * found. It is only using number generation once to find a random
+     * between the range provided. It then calculates the final number
+     * to pass mod-10 validation making this a much faster algorithm
+     * than some of the alternatives.
+     *
+     * <p>The two bounds could have different sizes in length. In this case
+     * the shorter number will have trailing zeros added, so that it
+     * matches the length of the longer number. In this case the algorithm
+     * is NOT going to provide the result between the lower value and
+     * the higher value.
+     *
+     * <p>The user will have to provide the final length as {@code int}
+     * to return the final result of that length.
+     *
+     * <p>The method splits generation into multiple steps. The first
+     * step is to normalise the numbers in case their lengths differ, as
+     * described above. Secondly, trailing zeroes are going to
+     * be added to both numbers to match {@code finalLength - 1}.
+     * Finally, a random number is generated between normalised
+     * ranges. Then, a Luhn sum is calculated to find the missing digit
+     * to meet mod-10 requirement. That last digit number is then
+     * added to the end of the randomly generated number.
+     *
+     * @param       lowerBound a {@code long} to be used as a lower
+     *                         bound for the calculation
+     * @param       upperBound a {@code long} to be used as an upper
+     *                         bound for the calculation
+     * @param       finalLength an {@code int} to be used as
+     *                          a final length of the result
+     * @return      random Luhn valid number between bounds of
+     *              {@code length = finalLength}
+     */
     public static long generateLuhnFromRange(long lowerBound, long upperBound, int finalLength) {
         int lowerBoundLength = countDigits(lowerBound);
         int upperBoundLength = countDigits(upperBound);
