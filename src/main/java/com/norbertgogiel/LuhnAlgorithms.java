@@ -142,12 +142,12 @@ public final class LuhnAlgorithms {
     }
 
     private static long normaliseBound(boolean isUpperBound, long number, int power) {
-        do {
+        while (power > 0) {
             number *= 10;
             if (isUpperBound)
                 number += 9;
             power--;
-        } while (power > 0);
+        }
         return number;
     }
 

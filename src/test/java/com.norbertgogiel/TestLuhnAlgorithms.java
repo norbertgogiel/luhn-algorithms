@@ -84,4 +84,11 @@ public class TestLuhnAlgorithms {
         assertEquals(0, testNumber);
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
+
+    @Test
+    public void testGenerateRandomLuhnOfLengthTwo() {
+        long testNumber = LuhnAlgorithms.generateRandomLuhn(2);
+        assertTrue(testNumber < 100);
+        assertTrue(LuhnAlgorithms.isValid(testNumber));
+    }
 }
