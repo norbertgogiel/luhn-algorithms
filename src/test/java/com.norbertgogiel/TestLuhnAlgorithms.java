@@ -34,6 +34,16 @@ public class TestLuhnAlgorithms {
     }
 
     @Test
+    public void testStringIsEmptyAndThrows() {
+        assertThrows(NumberFormatException.class, () -> LuhnAlgorithms.isValid(""));
+    }
+
+    @Test
+    public void testNullAndThrows() {
+        assertThrows(NumberFormatException.class, () -> LuhnAlgorithms.isValid(null));
+    }
+
+    @Test
     public void testStringBiggerThanMaxLongAndThrows() {
         assertThrows(NumberFormatException.class, () -> LuhnAlgorithms.isValid("9223372036854775808"));
     }
