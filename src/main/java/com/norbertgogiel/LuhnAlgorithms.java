@@ -104,9 +104,9 @@ public final class LuhnAlgorithms {
      * default as this is the only valid digit that passes mod10
      * validation.
      *
-     * <p>If the required length is larger than 19, i.e. larger
+     * <p>If the required length is larger than 18, i.e. larger
      * than length of {@link Long#MAX_VALUE} number, then the default
-     * value for the length is taken as 19. This is to return valid
+     * value for the length is taken as 18. This is to return valid
      * long and valid Luhn number.
      *
      * <p>The user will have to provide the final length as
@@ -123,7 +123,7 @@ public final class LuhnAlgorithms {
      */
     private static long generateLuhn(long lowerBound, long upperBound, int finalLength) {
         if (finalLength == 1) return 0;
-        if (finalLength > 19) finalLength = 19;
+        if (finalLength > 18) finalLength = 18;
         return luhnFullNumber(randomWithinRange(lowerBound, upperBound, finalLength));
     }
 
