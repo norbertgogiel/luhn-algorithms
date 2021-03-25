@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
 
+import java.math.BigInteger;
+
 public class TestLuhnAlgorithms {
 
     @Test
@@ -93,6 +95,13 @@ public class TestLuhnAlgorithms {
     public void testGenerateRandomLuhnOfLengthTwo() {
         long testNumber = LuhnAlgorithms.generateRandomLuhn(2);
         assertTrue(testNumber < 100);
+        assertTrue(LuhnAlgorithms.isValid(testNumber));
+    }
+
+    @Test
+    public void testGenerateRandomLuhnOfLengthLargerThanLengthOfLong() {
+        long testNumber = LuhnAlgorithms.generateRandomLuhn(30);
+        assertEquals(-1, BigInteger.valueOf(testNumber).compareTo(new BigInteger("10000000000000000000")));
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
 }
