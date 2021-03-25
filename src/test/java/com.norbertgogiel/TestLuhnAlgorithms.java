@@ -9,6 +9,9 @@ import org.junit.Test;
 
 import java.math.BigInteger;
 
+/**
+ * Unit tests for {@link LuhnAlgorithms}.
+ */
 public class TestLuhnAlgorithms {
 
     @Test
