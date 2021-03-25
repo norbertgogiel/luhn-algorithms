@@ -101,7 +101,7 @@ public class TestLuhnAlgorithms {
     @Test
     public void testGenerateRandomLuhnOfLengthLargerThanLengthOfLong() {
         long testNumber = LuhnAlgorithms.generateRandomLuhn(30);
-        assertEquals(-1, BigInteger.valueOf(testNumber).compareTo(new BigInteger("10000000000000000000")));
+        assertEquals(-1, BigInteger.valueOf(testNumber).compareTo(new BigInteger("1000000000000000000")));
         assertTrue(LuhnAlgorithms.isValid(testNumber));
     }
 }
