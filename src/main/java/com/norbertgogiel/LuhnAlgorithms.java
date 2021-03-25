@@ -1,5 +1,29 @@
 package com.norbertgogiel;
 
+/**
+ * This class {@code LuhnAlgorithms} contains methods for performing
+ * mathematical operations around Luhn number, such as:
+ * <ul>
+ *
+ * <li>Luhn number validation as parameter is form of either
+ * a {@code String} or {@code long}.
+ *
+ * <li>Luhn number generation of any length up 18.
+ * </ul>
+ *
+ * <p>The number validation relies on mod10 algorithm. A number as
+ * {@code long} or {@code String} can be validated.
+ *
+ * <p>Luhn number generation can be only up to 18 digits long due
+ * to {@link Long#MAX_VALUE} limitations. The advantage over most
+ * algorithms is that this algorithm does NOT circularly use random
+ * number generation until a match is found. It is only using number
+ * generation once to find a random in the range provided. It then
+ * calculates the final number to pass mod-10 validation making
+ * this a much faster algorithm than some of the alternatives.
+ *
+ * @author      Norbert Gogiel
+ */
 public final class LuhnAlgorithms {
 
     /**
