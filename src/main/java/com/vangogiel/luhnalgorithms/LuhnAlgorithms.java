@@ -1,4 +1,4 @@
-package com.norbertgogiel;
+package com.vangogiel.luhnalgorithms;
 
 /**
  * This class {@code LuhnAlgorithms} contains methods for performing

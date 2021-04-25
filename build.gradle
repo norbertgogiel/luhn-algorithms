@@ -1,4 +1,4 @@
-group 'com.norbertgogiel'
+group 'com.vangogiel'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
