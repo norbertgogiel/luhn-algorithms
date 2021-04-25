@@ -12,8 +12,9 @@ which is returned as `long`.
 ##### Maven
 
 ```xml
+
 <dependency>
-    <groupId>com.norbertgogiel.luhn-algorithms</groupId>
+    <groupId>com.vangogiel.luhn-algorithms</groupId>
     <artifactId>luhn-algorithms</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
@@ -23,7 +24,7 @@ which is returned as `long`.
 
 ```groovy
 dependencies {
-    implementation 'com.norbertgogiel:luhn-algorithms:1.0.0-SNAPSHOT'
+    implementation 'com.vangogiel:luhn-algorithms:1.0.0-SNAPSHOT'
 }
 ```
 
@@ -51,4 +52,4 @@ LuhnAlgorithms.generateRandomLuhn(6); // Returns for example 136820
 
 ## Changelog
 
-For a complete list of changes, and how to migrate between major versions, see [release page](https://github.com/norbertgogiel/luhn-algorithms/releases). 
+For a complete list of changes, and how to migrate between major versions, see [release page](https://github.com/vangogiel/luhn-algorithms/releases). 
