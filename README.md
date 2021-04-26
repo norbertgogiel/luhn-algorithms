@@ -14,7 +14,7 @@ which is returned as `long`.
 ```xml
 
 <dependency>
-    <groupId>com.vangogiel.luhn-algorithms</groupId>
+    <groupId>com.vangogiel.luhnalgorithms</groupId>
     <artifactId>luhn-algorithms</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
@@ -24,7 +24,7 @@ which is returned as `long`.
 
 ```groovy
 dependencies {
-    implementation 'com.vangogiel:luhn-algorithms:1.0.0-SNAPSHOT'
+    implementation 'com.vangogiel:luhnalgorithms:1.0.0-SNAPSHOT'
 }
 ```
 
