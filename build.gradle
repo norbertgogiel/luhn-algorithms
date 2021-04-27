@@ -1,8 +1,11 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'com.diffplug.gradle.spotless' version '4.5.1'
+}
+
 group 'com.vangogiel'
 version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 
@@ -37,6 +40,18 @@ jacocoTestCoverageVerification {
             }
         }
     }
+}
+
+spotless {
+    java {
+        importOrder("java", "javax", "com.norbertgogiel", "")
+        removeUnusedImports()
+        googleJavaFormat()
+    }
+}
+
+task devBuild {
+    finalizedBy spotlessJavaApply, build, jacocoTestReport, jacocoTestCoverageVerification
 }
 
 task ciBuild {
