@@ -24,7 +24,7 @@ which is returned as `long`.
 
 ```groovy
 dependencies {
-    implementation 'com.vangogiel:luhnalgorithms:1.0.0-SNAPSHOT'
+    implementation 'com.vangogiel.luhnalgorithms:luhn-algorithms:1.0.0-SNAPSHOT'
 }
 ```
 
