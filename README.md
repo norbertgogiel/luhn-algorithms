@@ -2,7 +2,7 @@
 
 Modulus-10 algorithms for validation and generation
 
-[![luhn-algorithms-ci](https://circleci.com/gh/vangogiel/luhn-algorithms.svg?circle-token=4e20e038fa9343b6ce41e480c552737ea9b68776&style=shield)](https://github.com/vangogiel/luhn-algorithms/actions)
+[![CI](https://github.com/vangogiel/luhn-algorithms/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/vangogiel/luhn-algorithms/actions/workflows/build.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This is a simple library utilising core Java for Modulus-10 algorithms. You can simply validate a number if provided as `long` or `String`. The latter is parsed into `long` primitive. You can also generate your own valid Luhn number,
