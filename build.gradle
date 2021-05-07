@@ -2,10 +2,12 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'com.diffplug.gradle.spotless' version '4.5.1'
+    id 'maven-publish'
+    id 'signing'
 }
 
-group 'com.vangogiel'
-version '1.0-SNAPSHOT'
+group 'com.vangogiel.luhnalgorithms'
+version '1.0.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -14,8 +16,8 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
 }
 
 jacoco {
@@ -47,6 +49,58 @@ spotless {
         importOrder("java", "javax", "com.norbertgogiel", "")
         removeUnusedImports()
         googleJavaFormat()
+    }
+}
+
+publishing {
+    java {
+        withJavadocJar()
+        withSourcesJar()
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name = project.name
+                description = 'Luhn algorithms for Luhn generation and validation'
+                url = 'https://github.com/vangogiel/luhn-algorithms'
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = "vangogiel"
+                        name = 'Norbert Gogiel'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/vangogiel/luhn-algorithms.git'
+                    developerConnection = 'scm:git:ssh://git@github.com/vangogiel/luhn-algorithms.git'
+                    url = 'https://github.com/vangogiel/luhn-algorithms'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "mavencentral"
+            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username System.getenv('SONATYPE_NEXUS_USERNAME')
+                password System.getenv('SONATYPE_NEXUS_PASSWORD')
+            }
+        }
+    }
+    signing {
+        def signingKey = System.getenv('GPG_SIGNING_SUB_KEY')
+        def signingPassword = System.getenv('GPG_SIGNING_PASSWORD')
+        if (signingKey != null && signingPassword != null) {
+            useInMemoryPgpKeys(signingKey.trim(), signingPassword.trim())
+        }
+        sign publishing.publications.mavenJava
     }
 }
 
