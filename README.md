@@ -58,4 +58,5 @@ For a complete list of changes, and how to migrate between major versions, see [
 
 ## License
 Copyright (C) 2021 Vangogiel - Norbert Gogiel
+
 Licensed under the Apache License, Version 2.0
