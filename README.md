@@ -17,7 +17,7 @@ which is returned as `long`.
 <dependency>
     <groupId>com.vangogiel.luhnalgorithms</groupId>
     <artifactId>luhn-algorithms</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -25,7 +25,7 @@ which is returned as `long`.
 
 ```groovy
 dependencies {
-    implementation 'com.vangogiel.luhnalgorithms:luhn-algorithms:1.0.0-SNAPSHOT'
+    implementation 'com.vangogiel.luhnalgorithms:luhn-algorithms:1.0.0'
 }
 ```
 
