@@ -2,7 +2,7 @@
 
 Modulus-10 algorithms for validation and generation
 
-[![CI](http://github.com/vangogiel/luhn-algorithms/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/vangogiel/luhn-algorithms/actions/workflows/build.yml)
+[![CI](https://github.com/vangogiel/luhn-algorithms/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/vangogiel/luhn-algorithms/actions/workflows/build.yml)
 [![License](http://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Maven Central](http://maven-badges.herokuapp.com/maven-central/com.vangogiel.luhnalgorithms/luhn-algorithms/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.vangogiel.luhnalgorithms/luhn-algorithms)
 
