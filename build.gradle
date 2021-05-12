@@ -113,6 +113,8 @@ publishing {
 
 nexusStaging {
     serverUrl = "https://s01.oss.sonatype.org/service/local/"
+    username System.getenv('SONATYPE_NEXUS_USERNAME')
+    password System.getenv('SONATYPE_NEXUS_PASSWORD')
 }
 
 task devBuild {
